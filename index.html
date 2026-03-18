@@ -112,6 +112,7 @@ const EVENTS_RAW = [
   { title:"6급 신입(인턴) 결과보고", start:"2026-03-31", end:"2026-03-31", cat:"report" },
   { title:"6급 수습사원 해외OJT", start:"2026-04-06", end:"2026-04-30", cat:"ojt" },
   { title:"KGC 퇴직예정자 법정의무교육", start:"2026-04-08", end:"2026-04-10", cat:"kgc" },
+  { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-10", end:"2026-04-10", cat:"kgc" },  // ★ 추가
   { title:"KT&G 경력입문교육", start:"2026-04-13", end:"2026-04-14", cat:"ktg" },
   { title:"아카데미 E코스", start:"2026-04-13", end:"2026-05-10", cat:"academy" },
   { title:"9급 영업 신입사원 현장 OJT", start:"2026-04-13", end:"2026-05-29", cat:"ojt" },
@@ -130,6 +131,7 @@ const EVENTS_RAW = [
   { title:"아카데미 E코스 테스트", start:"2026-05-11", end:"2026-05-12", cat:"academy" },
   { title:"신임관리자 리더십 1:1 DC·피드백", start:"2026-05-11", end:"2026-05-29", cat:"ktg" },
   { title:"아카데미 E코스 결과보고", start:"2026-05-14", end:"2026-05-14", cat:"report" },
+  { title:"하이퍼포머 리더십프로그램 Wrap-up", start:"2026-05-20", end:"2026-05-20", cat:"kgc" },  // ★ 추가
   { title:"본사 4급 사업의 이해", start:"2026-05-28", end:"2026-05-29", cat:"academy" },
   { title:"아카데미 A코스", start:"2026-06-01", end:"2026-06-30", cat:"academy" },
   { title:"9급 영업 신입사원 입문교육(II)", start:"2026-06-01", end:"2026-06-05", cat:"new9" },
@@ -146,14 +148,12 @@ function isOff(str){ const d=ds(str),dow=d.getDay(); return dow===0||dow===6||!!
 function hasWork(s,e){ const sd=ds(s),ed=ds(e); for(let d=new Date(sd);d<=ed;d.setDate(d.getDate()+1)){ if(!isOff(fd(d)))return true; } return false; }
 const EVENTS = EVENTS_RAW.filter(e=>e.start===e.end?!isOff(e.start):hasWork(e.start,e.end));
 
-// 범례 렌더링
 const legEl = document.getElementById("legend");
 Object.entries(COLORS).forEach(([,c])=>{
   legEl.innerHTML += `<div class="lg-item"><div class="lg-dot" style="background:${c.pill}"></div>${c.label}</div>`;
 });
 
 let curM=3, curView="cal";
-
 function setMonth(m){ curM=m; document.querySelectorAll(".m-tab").forEach((t,i)=>t.classList.toggle("active",i===m-3)); render(); }
 function setView(v){
   curView=v;
