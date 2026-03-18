@@ -8,39 +8,40 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #f7f6f2; --surface: #ffffff; --surface2: #f0efe9;
-    --border: rgba(0,0,0,0.09); --border2: rgba(0,0,0,0.15);
-    --text: #1a1918; --text2: #6b6a66; --text3: #a09f9b;
-    --accent: #3C3489; --accent-light: #eeedfe; --radius: 10px;
+    --bg: #f8f8f6; --surface: #ffffff; --surface2: #f3f3f0;
+    --border: rgba(0,0,0,0.07); --border2: rgba(0,0,0,0.12);
+    --text: #2a2a28; --text2: #7a7a76; --text3: #b0b0ab;
+    --accent: #5a5a8a; --accent-light: #e0e0f0; --radius: 10px;
   }
   body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
   header { background: var(--accent); padding: 28px 40px 24px; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   header h1 { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
-  header p { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; font-weight: 300; }
+  header p { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 4px; font-weight: 300; }
   .header-right { display: flex; gap: 8px; align-items: center; }
-  .view-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 6px 14px; border-radius: 6px; font-size: 12px; cursor: pointer; font-family: inherit; transition: background 0.15s; }
-  .view-btn:hover { background: rgba(255,255,255,0.25); }
+  .view-btn { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); color: #fff; padding: 6px 14px; border-radius: 6px; font-size: 12px; cursor: pointer; font-family: inherit; transition: background 0.15s; }
+  .view-btn:hover { background: rgba(255,255,255,0.28); }
   .view-btn.active { background: #fff; color: var(--accent); font-weight: 500; }
   main { padding: 28px 40px 60px; max-width: 1400px; margin: 0 auto; }
   .month-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
   .m-tab { padding: 8px 22px; border-radius: 8px; border: 1px solid var(--border2); background: var(--surface); color: var(--text2); font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit; transition: all 0.15s; }
   .m-tab:hover { border-color: var(--accent); color: var(--accent); }
   .m-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .legend { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-bottom: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; }
   .lg-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text2); }
-  .lg-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .lg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
   .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border: 1px solid var(--border2); border-radius: var(--radius); overflow: hidden; background: var(--border); gap: 1px; }
   .day-hdr { background: var(--surface2); padding: 9px 0; text-align: center; font-size: 12px; font-weight: 500; color: var(--text2); }
-  .day-hdr.sun { color: #A32D2D; }
-  .day-hdr.sat { color: #185FA5; }
+  .day-hdr.sun { color: #c47b7b; } .day-hdr.sat { color: #7b9bc4; }
   .day-cell { background: var(--surface); padding: 6px; min-height: 150px; }
-  .day-cell.dim { background: #faf9f5; }
+  .day-cell.dim { background: #fafaf8; }
   .day-cell.dim .day-num { color: var(--text3) !important; }
+  .day-cell.wknd { background: #fdf8f8; }
+  .day-cell.hday { background: #fff3f3; }
   .day-num { font-size: 12px; font-weight: 500; color: var(--text2); margin-bottom: 3px; line-height: 1.4; }
-  .day-num.sun { color: #A32D2D; }
-  .day-num.sat { color: #185FA5; }
+  .day-num.hol { color: #c47b7b; } .day-num.sat2 { color: #7b9bc4; }
+  .holiday-label { font-size: 9px; color: #c47b7b; margin-bottom: 2px; }
   .ev { font-size: 10px; line-height: 1.5; border-radius: 3px; padding: 2px 5px; margin-bottom: 2px; word-break: keep-all; cursor: default; }
-  .ev.continuing { border-left: 3px solid rgba(0,0,0,0.15); border-radius: 0 3px 3px 0; }
+  .ev.continuing { border-left: 3px solid rgba(0,0,0,0.1); border-radius: 0 3px 3px 0; }
   .grade-badge { display: inline-block; font-size: 9px; font-weight: 700; padding: 0 3px; border-radius: 2px; margin-right: 2px; vertical-align: middle; }
   #listView { display: none; }
   .list-month-title { font-size: 16px; font-weight: 700; color: var(--accent); margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--accent-light); }
@@ -49,7 +50,7 @@
   .list-table th { background: var(--surface2); padding: 9px 14px; text-align: left; font-size: 11px; font-weight: 500; color: var(--text2); border-bottom: 1px solid var(--border); }
   .list-table td { padding: 9px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
   .list-table tr:last-child td { border-bottom: none; }
-  .list-table tr:hover td { background: #faf9f6; }
+  .list-table tr:hover td { background: #f8f8f6; }
   .cat-pill { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
   .date-range { color: var(--text2); font-size: 12px; white-space: nowrap; }
   @media (max-width: 768px) {
@@ -79,21 +80,28 @@
     <button class="m-tab" onclick="setMonth(5)">5월</button>
     <button class="m-tab" onclick="setMonth(6)">6월</button>
   </div>
-  <div class="legend">
-    <div class="lg-item"><div class="lg-dot" style="background:#534AB7"></div>6급 교육</div>
-    <div class="lg-item"><div class="lg-dot" style="background:#D4537E"></div>9급 교육</div>
-    <div class="lg-item"><div class="lg-dot" style="background:#5F5E5A"></div>6·9급 혼합</div>
-    <div class="lg-item"><div class="lg-dot" style="background:#0F6E56"></div>OJT / 해외파견</div>
-    <div class="lg-item"><div class="lg-dot" style="background:#993C1D"></div>KGC 교육</div>
-    <div class="lg-item"><div class="lg-dot" style="background:#185FA5"></div>KT&G 교육</div>
-    <div class="lg-item"><div class="lg-dot" style="background:#854F0B"></div>보고 / 평가</div>
-    <div class="lg-item"><div class="lg-dot" style="background:#3B6D11"></div>아카데미 / 기타</div>
-  </div>
+  <div class="legend" id="legend"></div>
   <div id="calView"><div class="cal-grid" id="grid"></div></div>
   <div id="listView"><div id="listContent"></div></div>
 </main>
 <script>
-const EVENTS = [
+const HOLIDAYS = {
+  "2026-04-01":"공휴일", "2026-05-01":"근로자의날",
+  "2026-05-05":"어린이날", "2026-05-25":"공휴일"
+};
+
+const COLORS = {
+  new6:   { bg:"#ede8f8", text:"#4a3a88", badge:"6급", badgeBg:"#9b8fd4", badgeText:"#fff", pill:"#9b8fd4", pillText:"#fff", label:"6급 교육" },
+  new9:   { bg:"#fce8f2", text:"#8a2060", badge:"9급", badgeBg:"#d87ab0", badgeText:"#fff", pill:"#d87ab0", pillText:"#fff", label:"9급 교육" },
+  mixed:  { bg:"#ebebeb", text:"#484848", badge:"6·9급", badgeBg:"#a0a0a0", badgeText:"#fff", pill:"#a0a0a0", pillText:"#fff", label:"6·9급 혼합" },
+  ojt:    { bg:"#d6f5ee", text:"#15604a", badge:null, pill:"#50c0a0", pillText:"#fff", label:"OJT/파견" },
+  kgc:    { bg:"#ffe4cc", text:"#7a3500", badge:null, pill:"#f07030", pillText:"#fff", label:"KGC 교육" },
+  ktg:    { bg:"#d8ecfc", text:"#1a4878", badge:null, pill:"#5090d0", pillText:"#fff", label:"KT&G 교육" },
+  report: { bg:"#fdf6cc", text:"#6a4c00", badge:null, pill:"#d8b020", pillText:"#fff", label:"보고/평가" },
+  academy:{ bg:"#dff5d0", text:"#2a5c18", badge:null, pill:"#70b850", pillText:"#fff", label:"아카데미/기타" },
+};
+
+const EVENTS_RAW = [
   { title:"6급 신입사원 순환 OJT", start:"2026-03-03", end:"2026-04-02", cat:"new6" },
   { title:"9급 영업 신입사원 입문교육(I)", start:"2026-03-16", end:"2026-04-10", cat:"new9" },
   { title:"KGC 하이퍼포머 교육(DC/경영시뮬레이션)", start:"2026-03-18", end:"2026-03-19", cat:"kgc" },
@@ -129,21 +137,23 @@ const EVENTS = [
   { title:"본사 4급 사업의 이해", start:"2026-06-04", end:"2026-06-05", cat:"academy" },
   { title:"6급(R&D)·9급(제조) 신입사원 입문교육", start:"2026-06-15", end:"2026-06-30", cat:"mixed" },
 ];
-const COLORS = {
-  new6:   { bg:"#AFA9EC", text:"#26215C", badge:"6급", badgeBg:"#534AB7", badgeText:"#EEEDFE", pill:"#534AB7", pillText:"#fff", label:"6급 교육" },
-  new9:   { bg:"#ED93B1", text:"#4B1528", badge:"9급", badgeBg:"#993556", badgeText:"#FBEAF0", pill:"#993556", pillText:"#fff", label:"9급 교육" },
-  mixed:  { bg:"#D3D1C7", text:"#2C2C2A", badge:"6·9급", badgeBg:"#5F5E5A", badgeText:"#F1EFE8", pill:"#5F5E5A", pillText:"#fff", label:"6·9급 혼합" },
-  ojt:    { bg:"#5DCAA5", text:"#04342C", badge:null, pill:"#0F6E56", pillText:"#fff", label:"OJT/파견" },
-  kgc:    { bg:"#F0997B", text:"#4A1B0C", badge:null, pill:"#993C1D", pillText:"#fff", label:"KGC 교육" },
-  ktg:    { bg:"#85B7EB", text:"#042C53", badge:null, pill:"#185FA5", pillText:"#fff", label:"KT&G 교육" },
-  report: { bg:"#FAC775", text:"#412402", badge:null, pill:"#854F0B", pillText:"#fff", label:"보고/평가" },
-  academy:{ bg:"#97C459", text:"#173404", badge:null, pill:"#3B6D11", pillText:"#fff", label:"아카데미/기타" },
-};
+
 const MONTH_NAMES = {3:"3월",4:"4월",5:"5월",6:"6월"};
 function ds(s){ const p=s.split("-"); return new Date(+p[0],+p[1]-1,+p[2]); }
 function fd(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; }
 function fmtDate(s){ return s.slice(5).replace("-","."); }
+function isOff(str){ const d=ds(str),dow=d.getDay(); return dow===0||dow===6||!!HOLIDAYS[str]; }
+function hasWork(s,e){ const sd=ds(s),ed=ds(e); for(let d=new Date(sd);d<=ed;d.setDate(d.getDate()+1)){ if(!isOff(fd(d)))return true; } return false; }
+const EVENTS = EVENTS_RAW.filter(e=>e.start===e.end?!isOff(e.start):hasWork(e.start,e.end));
+
+// 범례 렌더링
+const legEl = document.getElementById("legend");
+Object.entries(COLORS).forEach(([,c])=>{
+  legEl.innerHTML += `<div class="lg-item"><div class="lg-dot" style="background:${c.pill}"></div>${c.label}</div>`;
+});
+
 let curM=3, curView="cal";
+
 function setMonth(m){ curM=m; document.querySelectorAll(".m-tab").forEach((t,i)=>t.classList.toggle("active",i===m-3)); render(); }
 function setView(v){
   curView=v;
@@ -153,6 +163,7 @@ function setView(v){
   document.querySelectorAll(".month-tabs").forEach(el=>el.style.display=v==="cal"?"flex":"none");
   render();
 }
+
 function makeBar(ev, isStart){
   const c=COLORS[ev.cat];
   const bar=document.createElement("div");
@@ -165,12 +176,12 @@ function makeBar(ev, isStart){
     badge.style.background=c.badgeBg; badge.style.color=c.badgeText;
     badge.textContent=c.badge; bar.appendChild(badge);
   }
-  const label = isStart
-    ? ev.title + (ev.start!==ev.end ? ` (~${fmtDate(ev.end)})` : "")
-    : ev.title;
-  bar.appendChild(document.createTextNode(label));
+  bar.appendChild(document.createTextNode(
+    isStart ? ev.title+(ev.start!==ev.end?` (~${fmtDate(ev.end)})`:"") : ev.title
+  ));
   return bar;
 }
+
 function renderCal(){
   const grid=document.getElementById("grid"); grid.innerHTML="";
   ["일","월","화","수","목","금","토"].forEach((d,i)=>{
@@ -179,27 +190,30 @@ function renderCal(){
     h.textContent=d; grid.appendChild(h);
   });
   const first=new Date(2026,curM-1,1), last=new Date(2026,curM,0);
-  const startDow=first.getDay(), total=Math.ceil((startDow+last.getDate())/7)*7;
+  const sdow=first.getDay(), total=Math.ceil((sdow+last.getDate())/7)*7;
   for(let i=0;i<total;i++){
-    const date=new Date(2026,curM-1,i-startDow+1);
-    const dateStr=fd(date), inMonth=date.getMonth()===curM-1, dow=date.getDay();
+    const date=new Date(2026,curM-1,i-sdow+1);
+    const dstr=fd(date), inM=date.getMonth()===curM-1, dow=date.getDay();
+    const isW=dow===0||dow===6, isH=!!HOLIDAYS[dstr];
     const cell=document.createElement("div");
-    cell.className="day-cell"+(!inMonth?" dim":"");
+    cell.className="day-cell"+(!inM?" dim":isH?" hday":isW?" wknd":"");
     const num=document.createElement("div");
-    num.className="day-num"+(dow===0?" sun":dow===6?" sat":"");
+    num.className="day-num"+(dow===0||isH?" hol":dow===6?" sat2":"");
     num.textContent=date.getDate(); cell.appendChild(num);
-    if(inMonth){
-      EVENTS.filter(e=>e.start===dateStr).forEach(ev=>cell.appendChild(makeBar(ev,true)));
-      EVENTS.filter(e=>e.start!==dateStr&&ds(e.start)<=date&&ds(e.end)>=date).forEach(ev=>cell.appendChild(makeBar(ev,false)));
+    if(inM&&isH){ const hl=document.createElement("div"); hl.className="holiday-label"; hl.textContent=HOLIDAYS[dstr]; cell.appendChild(hl); }
+    if(inM&&!isOff(dstr)){
+      EVENTS.filter(e=>e.start===dstr).forEach(ev=>cell.appendChild(makeBar(ev,true)));
+      EVENTS.filter(e=>e.start!==dstr&&ds(e.start)<=date&&ds(e.end)>=date).forEach(ev=>cell.appendChild(makeBar(ev,false)));
     }
     grid.appendChild(cell);
   }
 }
+
 function renderList(){
   const content=document.getElementById("listContent"); content.innerHTML="";
   [3,4,5,6].forEach(m=>{
-    const mStart=new Date(2026,m-1,1), mEnd=new Date(2026,m,0);
-    const evs=EVENTS.filter(e=>ds(e.start)<=mEnd&&ds(e.end)>=mStart).sort((a,b)=>a.start.localeCompare(b.start));
+    const mS=new Date(2026,m-1,1), mE=new Date(2026,m,0);
+    const evs=EVENTS.filter(e=>ds(e.start)<=mE&&ds(e.end)>=mS).sort((a,b)=>a.start.localeCompare(b.start));
     if(!evs.length) return;
     const title=document.createElement("div"); title.className="list-month-title"; title.textContent="2026년 "+MONTH_NAMES[m]; content.appendChild(title);
     const tbl=document.createElement("table"); tbl.className="list-table";
@@ -207,13 +221,14 @@ function renderList(){
     const tbody=document.createElement("tbody");
     evs.forEach(ev=>{
       const c=COLORS[ev.cat]; const tr=document.createElement("tr");
-      const dateStr=ev.start===ev.end?fmtDate(ev.start):`${fmtDate(ev.start)} ~ ${fmtDate(ev.end)}`;
-      tr.innerHTML=`<td class="date-range">${dateStr}</td><td>${ev.title}</td><td><span class="cat-pill" style="background:${c.pill};color:${c.pillText}">${c.label}</span></td>`;
+      const dr=ev.start===ev.end?fmtDate(ev.start):`${fmtDate(ev.start)} ~ ${fmtDate(ev.end)}`;
+      tr.innerHTML=`<td class="date-range">${dr}</td><td>${ev.title}</td><td><span class="cat-pill" style="background:${c.pill};color:${c.pillText}">${c.label}</span></td>`;
       tbody.appendChild(tr);
     });
     tbl.appendChild(tbody); content.appendChild(tbl);
   });
 }
+
 function render(){ if(curView==="cal") renderCal(); else renderList(); }
 render();
 </script>
