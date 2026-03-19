@@ -102,6 +102,7 @@ const COLORS = {
 };
 
 const EVENTS_RAW = [
+  // ── 3월 ──
   { title:"6급 신입사원 순환 OJT", start:"2026-03-03", end:"2026-04-02", cat:"new6" },
   { title:"9급 영업 신입사원 입문교육(I)", start:"2026-03-16", end:"2026-04-10", cat:"new9" },
   { title:"KGC 하이퍼포머 교육(DC/경영시뮬레이션)", start:"2026-03-18", end:"2026-03-19", cat:"kgc" },
@@ -109,10 +110,13 @@ const EVENTS_RAW = [
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-03-24", end:"2026-03-24", cat:"kgc" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-03-26", end:"2026-03-26", cat:"kgc" },
   { title:"KT&G 신임관리자 경영실무 테스트", start:"2026-03-27", end:"2026-03-27", cat:"ktg" },
+  { title:"관리자 세미나 이러닝 운영", start:"2026-03-30", end:"2026-04-26", cat:"academy" },
   { title:"6급 신입(인턴) 결과보고", start:"2026-03-31", end:"2026-03-31", cat:"report" },
+
+  // ── 4월 ──
   { title:"6급 수습사원 해외OJT", start:"2026-04-06", end:"2026-04-30", cat:"ojt" },
   { title:"KGC 퇴직예정자 법정의무교육", start:"2026-04-08", end:"2026-04-10", cat:"kgc" },
-  { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-10", end:"2026-04-10", cat:"kgc" },  // ★ 추가
+  { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-10", end:"2026-04-10", cat:"kgc" },
   { title:"KT&G 경력입문교육", start:"2026-04-13", end:"2026-04-14", cat:"ktg" },
   { title:"아카데미 E코스", start:"2026-04-13", end:"2026-05-10", cat:"academy" },
   { title:"9급 영업 신입사원 현장 OJT", start:"2026-04-13", end:"2026-05-29", cat:"ojt" },
@@ -120,24 +124,36 @@ const EVENTS_RAW = [
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-20", end:"2026-04-20", cat:"kgc" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-21", end:"2026-04-21", cat:"kgc" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-22", end:"2026-04-22", cat:"kgc" },
-  { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-24", end:"2026-04-24", cat:"kgc" },
   { title:"9급 수습OJT 결과보고", start:"2026-04-23", end:"2026-04-23", cat:"report" },
+  { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-24", end:"2026-04-24", cat:"kgc" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-27", end:"2026-04-27", cat:"kgc" },
   { title:"9급 수습사원 정규임용식", start:"2026-04-28", end:"2026-04-28", cat:"report" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-28", end:"2026-04-28", cat:"kgc" },
   { title:"KT&G 신임관리자 MBA 워크숍", start:"2026-04-29", end:"2026-04-30", cat:"ktg" },
   { title:"KT&G그룹 신임임원 세미나", start:"2026-04-30", end:"2026-04-30", cat:"ktg" },
+
+  // ── 5월 ──
   { title:"수습사원 해외교육 파견·모니터링", start:"2026-05-04", end:"2026-06-30", cat:"ojt" },
+  { title:"(국내) 신임관리자 DC진단", start:"2026-05-06", end:"2026-05-08", cat:"ktg" },
   { title:"아카데미 E코스 테스트", start:"2026-05-11", end:"2026-05-12", cat:"academy" },
-  { title:"신임관리자 리더십 1:1 DC·피드백", start:"2026-05-11", end:"2026-05-29", cat:"ktg" },
+  { title:"(해외) 신임관리자 DC진단", start:"2026-05-12", end:"2026-05-14", cat:"ktg" },
   { title:"아카데미 E코스 결과보고", start:"2026-05-14", end:"2026-05-14", cat:"report" },
-  { title:"하이퍼포머 리더십프로그램 Wrap-up", start:"2026-05-20", end:"2026-05-20", cat:"kgc" },  // ★ 추가
+  { title:"하이퍼포머 리더십프로그램 Wrap-up", start:"2026-05-20", end:"2026-05-20", cat:"kgc" },
+  { title:"(국내) 신임관리자 피드백", start:"2026-05-26", end:"2026-05-29", cat:"ktg" },
   { title:"본사 4급 사업의 이해", start:"2026-05-28", end:"2026-05-29", cat:"academy" },
-  { title:"아카데미 A코스", start:"2026-06-01", end:"2026-06-30", cat:"academy" },
+
+  // ── 6월 ──
+  { title:"A코스 마케팅", start:"2026-06-01", end:"2026-06-01", cat:"academy" },
   { title:"9급 영업 신입사원 입문교육(II)", start:"2026-06-01", end:"2026-06-05", cat:"new9" },
   { title:"9급 영업 신입(인턴) 결과보고", start:"2026-06-02", end:"2026-06-02", cat:"report" },
   { title:"본사 4급 사업의 이해", start:"2026-06-04", end:"2026-06-05", cat:"academy" },
+  { title:"A코스 경영전략", start:"2026-06-08", end:"2026-06-08", cat:"academy" },
   { title:"6급(R&D)·9급(제조) 신입사원 입문교육", start:"2026-06-15", end:"2026-06-30", cat:"mixed" },
+  { title:"A코스 재무회계", start:"2026-06-15", end:"2026-06-15", cat:"academy" },
+  { title:"A코스 관리회계", start:"2026-06-16", end:"2026-06-16", cat:"academy" },
+  { title:"A코스 AC 사전이론 강의", start:"2026-06-19", end:"2026-06-19", cat:"academy" },
+  { title:"A코스 AC", start:"2026-06-23", end:"2026-06-24", cat:"academy" },
+  { title:"A코스 AC", start:"2026-06-25", end:"2026-06-26", cat:"academy" },
 ];
 
 const MONTH_NAMES = {3:"3월",4:"4월",5:"5월",6:"6월"};
