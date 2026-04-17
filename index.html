@@ -89,7 +89,6 @@ const HOLIDAYS = {
   "2026-04-01":"공휴일", "2026-05-01":"근로자의날",
   "2026-05-05":"어린이날", "2026-05-25":"공휴일"
 };
-
 const COLORS = {
   new6:   { bg:"#ede8f8", text:"#4a3a88", badge:"6급", badgeBg:"#9b8fd4", badgeText:"#fff", pill:"#9b8fd4", pillText:"#fff", label:"6급 교육" },
   new9:   { bg:"#fce8f2", text:"#8a2060", badge:"9급", badgeBg:"#d87ab0", badgeText:"#fff", pill:"#d87ab0", pillText:"#fff", label:"9급 교육" },
@@ -100,7 +99,6 @@ const COLORS = {
   report: { bg:"#fdf6cc", text:"#6a4c00", badge:null, pill:"#d8b020", pillText:"#fff", label:"보고/평가" },
   academy:{ bg:"#dff5d0", text:"#2a5c18", badge:null, pill:"#70b850", pillText:"#fff", label:"아카데미/기타" },
 };
-
 const EVENTS_RAW = [
   // ── 3월 ──
   { title:"6급 신입사원 순환 OJT", start:"2026-03-03", end:"2026-04-02", cat:"new6" },
@@ -112,33 +110,36 @@ const EVENTS_RAW = [
   { title:"KT&G 신임관리자 경영실무 테스트", start:"2026-03-27", end:"2026-03-27", cat:"ktg" },
   { title:"관리자 세미나 이러닝 운영", start:"2026-03-30", end:"2026-04-26", cat:"academy" },
   { title:"6급 신입(인턴) 결과보고", start:"2026-03-31", end:"2026-03-31", cat:"report" },
-
   // ── 4월 ──
-  { title:"6급 수습사원 해외OJT", start:"2026-04-06", end:"2026-04-30", cat:"ojt" },
+  { title:"6급 수습사원 해외 OJT 사전교육", start:"2026-04-06", end:"2026-04-30", cat:"ojt" },
   { title:"KGC 퇴직예정자 법정의무교육", start:"2026-04-08", end:"2026-04-10", cat:"kgc" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-10", end:"2026-04-10", cat:"kgc" },
   { title:"KT&G 경력입문교육", start:"2026-04-13", end:"2026-04-14", cat:"ktg" },
   { title:"아카데미 E코스", start:"2026-04-13", end:"2026-05-10", cat:"academy" },
   { title:"9급 영업 신입사원 현장 OJT", start:"2026-04-13", end:"2026-05-29", cat:"ojt" },
+  { title:"하이퍼포머 1:1코칭", start:"2026-04-14", end:"2026-04-14", cat:"kgc" },
   { title:"도제사원 수습 OJT 결과보고", start:"2026-04-16", end:"2026-04-16", cat:"report" },
+  { title:"하이퍼포머 1:1코칭", start:"2026-04-16", end:"2026-04-16", cat:"kgc" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-20", end:"2026-04-20", cat:"kgc" },
+  { title:"하이퍼포머 1:1코칭", start:"2026-04-21", end:"2026-04-21", cat:"kgc" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-21", end:"2026-04-21", cat:"kgc" },
+  { title:"하이퍼포머 1:1코칭", start:"2026-04-22", end:"2026-04-22", cat:"kgc" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-22", end:"2026-04-22", cat:"kgc" },
   { title:"9급 수습OJT 결과보고", start:"2026-04-23", end:"2026-04-23", cat:"report" },
+  { title:"관리자 세미나 재시험", start:"2026-04-23", end:"2026-04-23", cat:"academy" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-24", end:"2026-04-24", cat:"kgc" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-27", end:"2026-04-27", cat:"kgc" },
   { title:"9급(영업/제조) 신입사원 정규임용식", start:"2026-04-28", end:"2026-04-28", cat:"report" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-28", end:"2026-04-28", cat:"kgc" },
   { title:"KT&G 신임관리자 MBA 워크숍", start:"2026-04-29", end:"2026-04-30", cat:"ktg" },
   { title:"KT&G그룹 신임임원 세미나", start:"2026-04-30", end:"2026-04-30", cat:"ktg" },
-
   // ── 5월 ──
   { title:"수습사원 해외교육 파견·모니터링", start:"2026-05-04", end:"2026-06-30", cat:"ojt" },
+  { title:"6급 수습사원 해외OJT 출국", start:"2026-05-11", end:"2026-05-11", cat:"ojt" },
   { title:"아카데미 E코스 테스트", start:"2026-05-11", end:"2026-05-12", cat:"academy" },
   { title:"아카데미 E코스 결과보고", start:"2026-05-14", end:"2026-05-14", cat:"report" },
   { title:"하이퍼포머 리더십프로그램 Wrap-up", start:"2026-05-20", end:"2026-05-20", cat:"kgc" },
   { title:"본사 4급 사업의 이해", start:"2026-05-28", end:"2026-05-29", cat:"academy" },
-
   // ── 6월 ──
   { title:"A코스 마케팅", start:"2026-06-01", end:"2026-06-01", cat:"academy" },
   { title:"9급 영업 신입사원 입문교육(II)", start:"2026-06-01", end:"2026-06-05", cat:"new9" },
@@ -152,7 +153,6 @@ const EVENTS_RAW = [
   { title:"A코스 AC", start:"2026-06-23", end:"2026-06-24", cat:"academy" },
   { title:"A코스 AC", start:"2026-06-25", end:"2026-06-26", cat:"academy" },
 ];
-
 const MONTH_NAMES = {3:"3월",4:"4월",5:"5월",6:"6월"};
 function ds(s){ const p=s.split("-"); return new Date(+p[0],+p[1]-1,+p[2]); }
 function fd(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; }
@@ -160,12 +160,10 @@ function fmtDate(s){ return s.slice(5).replace("-","."); }
 function isOff(str){ const d=ds(str),dow=d.getDay(); return dow===0||dow===6||!!HOLIDAYS[str]; }
 function hasWork(s,e){ const sd=ds(s),ed=ds(e); for(let d=new Date(sd);d<=ed;d.setDate(d.getDate()+1)){ if(!isOff(fd(d)))return true; } return false; }
 const EVENTS = EVENTS_RAW.filter(e=>e.start===e.end?!isOff(e.start):hasWork(e.start,e.end));
-
 const legEl = document.getElementById("legend");
 Object.entries(COLORS).forEach(([,c])=>{
   legEl.innerHTML += `<div class="lg-item"><div class="lg-dot" style="background:${c.pill}"></div>${c.label}</div>`;
 });
-
 let curM=3, curView="cal";
 function setMonth(m){ curM=m; document.querySelectorAll(".m-tab").forEach((t,i)=>t.classList.toggle("active",i===m-3)); render(); }
 function setView(v){
@@ -176,7 +174,6 @@ function setView(v){
   document.querySelectorAll(".month-tabs").forEach(el=>el.style.display=v==="cal"?"flex":"none");
   render();
 }
-
 function makeBar(ev, isStart){
   const c=COLORS[ev.cat];
   const bar=document.createElement("div");
@@ -194,7 +191,6 @@ function makeBar(ev, isStart){
   ));
   return bar;
 }
-
 function renderCal(){
   const grid=document.getElementById("grid"); grid.innerHTML="";
   ["일","월","화","수","목","금","토"].forEach((d,i)=>{
@@ -221,7 +217,6 @@ function renderCal(){
     grid.appendChild(cell);
   }
 }
-
 function renderList(){
   const content=document.getElementById("listContent"); content.innerHTML="";
   [3,4,5,6].forEach(m=>{
@@ -241,7 +236,6 @@ function renderList(){
     tbl.appendChild(tbody); content.appendChild(tbl);
   });
 }
-
 function render(){ if(curView==="cal") renderCal(); else renderList(); }
 render();
 </script>
