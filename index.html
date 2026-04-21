@@ -65,8 +65,8 @@
 <body>
 <header>
   <div>
-    <h1>리더십교육부 주요 교육 일정</h1>
-    <p>2026년 3월 — 6월</p>
+    <h1>리더십교육부 주요 교육 일정 2026</h1>
+    <p>2026년 3월 — 8월</p>
   </div>
   <div class="header-right">
     <button class="view-btn active" onclick="setView('cal')">캘린더</button>
@@ -79,6 +79,8 @@
     <button class="m-tab" onclick="setMonth(4)">4월</button>
     <button class="m-tab" onclick="setMonth(5)">5월</button>
     <button class="m-tab" onclick="setMonth(6)">6월</button>
+    <button class="m-tab" onclick="setMonth(7)">7월</button>
+    <button class="m-tab" onclick="setMonth(8)">8월</button>
   </div>
   <div class="legend" id="legend"></div>
   <div id="calView"><div class="cal-grid" id="grid"></div></div>
@@ -87,7 +89,8 @@
 <script>
 const HOLIDAYS = {
   "2026-04-01":"공휴일", "2026-05-01":"근로자의날",
-  "2026-05-05":"어린이날", "2026-05-25":"공휴일"
+  "2026-05-05":"어린이날", "2026-05-25":"공휴일",
+  "2026-06-03":"지방선거"
 };
 const COLORS = {
   new6:   { bg:"#ede8f8", text:"#4a3a88", badge:"6급", badgeBg:"#9b8fd4", badgeText:"#fff", pill:"#9b8fd4", pillText:"#fff", label:"6급 교육" },
@@ -131,29 +134,32 @@ const EVENTS_RAW = [
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-27", end:"2026-04-27", cat:"kgc" },
   { title:"9급(영업/제조) 신입사원 정규임용식", start:"2026-04-28", end:"2026-04-28", cat:"report" },
   { title:"KGC 관리자 리모트 리더십 교육", start:"2026-04-28", end:"2026-04-28", cat:"kgc" },
-  { title:"KT&G 신임관리자 MBA 워크숍", start:"2026-04-29", end:"2026-04-30", cat:"ktg" },
+  { title:"KT&G그룹 신임관리자 경영실무심화 워크숍", start:"2026-04-29", end:"2026-04-30", cat:"ktg" },
   { title:"KT&G그룹 신임임원 세미나", start:"2026-04-30", end:"2026-04-30", cat:"ktg" },
   // ── 5월 ──
   { title:"수습사원 해외교육 파견·모니터링", start:"2026-05-04", end:"2026-06-30", cat:"ojt" },
   { title:"6급 수습사원 해외OJT 출국", start:"2026-05-11", end:"2026-05-11", cat:"ojt" },
-  { title:"아카데미 E코스 테스트", start:"2026-05-11", end:"2026-05-12", cat:"academy" },
+  { title:"아카데미 E코스 테스트", start:"2026-05-11", end:"2026-05-11", cat:"academy" },
   { title:"아카데미 E코스 결과보고", start:"2026-05-14", end:"2026-05-14", cat:"report" },
   { title:"하이퍼포머 리더십프로그램 Wrap-up", start:"2026-05-20", end:"2026-05-20", cat:"kgc" },
+  { title:"A코스(마케팅)", start:"2026-05-27", end:"2026-05-27", cat:"academy" },
   { title:"본사 4급 사업의 이해", start:"2026-05-28", end:"2026-05-29", cat:"academy" },
   // ── 6월 ──
-  { title:"A코스 마케팅", start:"2026-06-01", end:"2026-06-01", cat:"academy" },
   { title:"9급 영업 신입사원 입문교육(II)", start:"2026-06-01", end:"2026-06-05", cat:"new9" },
   { title:"9급 영업 신입(인턴) 결과보고", start:"2026-06-02", end:"2026-06-02", cat:"report" },
+  { title:"A코스(경영전략)", start:"2026-06-04", end:"2026-06-04", cat:"academy" },
   { title:"본사 4급 사업의 이해", start:"2026-06-04", end:"2026-06-05", cat:"academy" },
-  { title:"A코스 경영전략", start:"2026-06-08", end:"2026-06-08", cat:"academy" },
-  { title:"6급(R&D)·9급(제조) 신입사원 입문교육", start:"2026-06-15", end:"2026-06-30", cat:"mixed" },
-  { title:"A코스 재무회계", start:"2026-06-15", end:"2026-06-15", cat:"academy" },
-  { title:"A코스 관리회계", start:"2026-06-16", end:"2026-06-16", cat:"academy" },
-  { title:"A코스 AC 사전이론 강의", start:"2026-06-19", end:"2026-06-19", cat:"academy" },
-  { title:"A코스 AC", start:"2026-06-23", end:"2026-06-24", cat:"academy" },
-  { title:"A코스 AC", start:"2026-06-25", end:"2026-06-26", cat:"academy" },
+  { title:"6급(R&D)·9급(제조) 신입사원 입문교육(I)", start:"2026-06-08", end:"2026-06-26", cat:"mixed" },
+  { title:"A코스(재무회계)", start:"2026-06-09", end:"2026-06-09", cat:"academy" },
+  { title:"A코스(관리회계)", start:"2026-06-16", end:"2026-06-16", cat:"academy" },
+  { title:"A코스 MBA 테스트", start:"2026-06-22", end:"2026-06-22", cat:"academy" },
+  { title:"A코스(리더십AC진단)", start:"2026-06-23", end:"2026-06-26", cat:"academy" },
+  // ── 7월~ ──
+  { title:"6급(R&D)·9급(제조) 신입사원 직무교육", start:"2026-06-29", end:"2026-08-21", cat:"mixed" },
+  // ── 8월 ──
+  { title:"6급(R&D)·9급(제조) 신입사원 입문교육(II)", start:"2026-08-24", end:"2026-08-28", cat:"mixed" },
 ];
-const MONTH_NAMES = {3:"3월",4:"4월",5:"5월",6:"6월"};
+const MONTH_NAMES = {3:"3월",4:"4월",5:"5월",6:"6월",7:"7월",8:"8월"};
 function ds(s){ const p=s.split("-"); return new Date(+p[0],+p[1]-1,+p[2]); }
 function fd(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; }
 function fmtDate(s){ return s.slice(5).replace("-","."); }
@@ -219,7 +225,7 @@ function renderCal(){
 }
 function renderList(){
   const content=document.getElementById("listContent"); content.innerHTML="";
-  [3,4,5,6].forEach(m=>{
+  [3,4,5,6,7,8].forEach(m=>{
     const mS=new Date(2026,m-1,1), mE=new Date(2026,m,0);
     const evs=EVENTS.filter(e=>ds(e.start)<=mE&&ds(e.end)>=mS).sort((a,b)=>a.start.localeCompare(b.start));
     if(!evs.length) return;
